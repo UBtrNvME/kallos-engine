@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@layer base {
+  :root, [data-theme="dark"] {
+    --color-bg: #09090B;
+    --color-surface: #18181B;
+    --color-border: #27272A;
+    --color-text-primary: #FAFAFA;
+    --color-text-muted: #A1A1AA;
+    --color-primary: #A855F7;
+    --color-primary-text: #09090B;
+    --color-secondary: #3B82F6;
+    --color-secondary-text: #FAFAFA;
+    --color-accent: #D4FF00;
+    --color-focus-ring: #D4FF00;
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #F43F5E;
+    --color-info: #06B6D4;
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --radius-none: 0px;
+    --radius-sharp: 2px;
+    --radius-tactical: 4px;
+    --radius-card: 8px;
+  }
+
+  [data-theme="light"] {
+    --color-bg: #FAFAFA;
+    --color-surface: #FFFFFF;
+    --color-border: #E4E4E7;
+    --color-text-primary: #09090B;
+    --color-text-muted: #71717A;
+    --color-primary: #7E22CE;
+    --color-primary-text: #FFFFFF;
+    --color-secondary: #1D4ED8;
+    --color-secondary-text: #FFFFFF;
+    --color-accent: #D4FF00;
+    --color-focus-ring: #7E22CE;
+    --color-success: #047857;
+    --color-warning: #B45309;
+    --color-error: #BE123C;
+    --color-info: #0E7490;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+  }
+
+  button, input, select, textarea, code, pre, [data-kallos-trigger] {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  .kallos-underline {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+  }
+
+  .kallos-focus-ring {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Dialog Keyframe Animations */
+  @keyframes kallosOverlayShow {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes kallosContentShow {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-kallos-overlay {
+    animation: kallosOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-kallos-content {
+    animation: kallosContentShow 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
